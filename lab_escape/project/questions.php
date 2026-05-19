@@ -1,5 +1,23 @@
-<?php 
-include 'config.php';   
+
+<?php
+if (!empty($questions) && count($questions) > 0) {
+    foreach ($questions as $row) {
+        echo "<div class='question-item' style='text-align: right; direction: rtl;'>";
+       
+        echo "<p class='question-text'><strong>" . $row['question_text'] . "</strong></p>";
+        
+
+        for ($i = 1; $i <= 4; $i++) {
+            echo "<div class='form-check'>";
+            echo "<input type='radio' name='answer[" . $row['id'] . "]' value='" . $i . "' id='q_" . $row['id'] . "_" . $i . "' required>";
+            echo "<label for='q_" . $row['id'] . "_" . $i . "' style='margin-right: 10px;'>" . $row['ans' . $i] . "</label>";
+            echo "</div>";
+        }
+        echo "</div><hr>";
+    }
+} else {
+    echo "<p>لا توجد أسئلة لهذا القسم.</p>";
+}
 ?>
 
 <!DOCTYPE html>
